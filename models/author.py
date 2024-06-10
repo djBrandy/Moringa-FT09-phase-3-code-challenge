@@ -50,3 +50,7 @@ class Author:
         magazines = cursor.fetchall()
         conn.close()
         return magazines
+    
+
+    def __str__(self):
+        return f"Author(ID: {self._id}, Name: {self._name})"

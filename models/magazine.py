@@ -51,6 +51,7 @@ class Magazine:
         articles = cursor.fetchall()
         conn.close()
         return articles
+    
 
     def contributors(self):
         conn = get_db_connection()
@@ -64,3 +65,7 @@ class Magazine:
         contributors = cursor.fetchall()
         conn.close()
         return contributors
+
+
+    def __str__(self):
+        return f"Magazine(ID: {self._id}, Name: {self._name})"

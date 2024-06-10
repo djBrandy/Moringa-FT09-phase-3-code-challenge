@@ -45,7 +45,8 @@ class Article:
         conn.commit()
         article_id = cursor.lastrowid
         conn.close()
-        return cls(article_id, author_id, magazine_id, title, content)
+        return cls(article_id, title, content, author_id, magazine_id)
+
 
     def __str__(self):
         return f"Article(ID: {self._id}, Title: {self._title}, Author ID: {self._author_id}, Magazine ID: {self._magazine_id})"
