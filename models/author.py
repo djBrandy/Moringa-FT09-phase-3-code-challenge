@@ -6,20 +6,16 @@
 #     def __repr__(self):
 #         return f'<Author {self.name}>'
 from database.setup import get_db_connection
-
 class Author:
     def __init__(self, id, name):
         self._id = id
         self._name = name
-
     @property
     def id(self):
         return self._id
-
     @property
     def name(self):
         return self._name
-
     @classmethod
     def create(cls, name):
         conn = get_db_connection()
@@ -29,7 +25,6 @@ class Author:
         author_id = cursor.lastrowid
         conn.close()
         return cls(author_id, name)
-
     def articles(self):
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -37,7 +32,6 @@ class Author:
         articles = cursor.fetchall()
         conn.close()
         return articles
-
     def magazines(self):
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -50,7 +44,5 @@ class Author:
         magazines = cursor.fetchall()
         conn.close()
         return magazines
-    
-
     def __str__(self):
         return f"Author(ID: {self._id}, Name: {self._name})"

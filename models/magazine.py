@@ -7,33 +7,26 @@
 #     def __repr__(self):
 #         return f'<Magazine {self.name}>'
 from database.setup import get_db_connection
-
 class Magazine:
     def __init__(self, id, name, category):
         self._id = id
         self._name = name
         self._category = category
-
     @property
     def id(self):
         return self._id
-
     @property
     def name(self):
         return self._name
-
     @name.setter
     def name(self, value):
         self._name = value
-
     @property
     def category(self):
         return self._category
-
     @category.setter
     def category(self, value):
         self._category = value
-
     @classmethod
     def create(cls, name, category):
         conn = get_db_connection()
@@ -43,7 +36,6 @@ class Magazine:
         magazine_id = cursor.lastrowid
         conn.close()
         return cls(magazine_id, name, category)
-
     def articles(self):
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -51,8 +43,6 @@ class Magazine:
         articles = cursor.fetchall()
         conn.close()
         return articles
-    
-
     def contributors(self):
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -65,7 +55,5 @@ class Magazine:
         contributors = cursor.fetchall()
         conn.close()
         return contributors
-
-
     def __str__(self):
         return f"Magazine(ID: {self._id}, Name: {self._name})"
